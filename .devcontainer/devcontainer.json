@@ -1,0 +1,35 @@
+{
+    "name": "Example project java with quarkus and kafka simple",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "runArgs": [
+        "--name=kafka-with-quarkus-simple",
+        "--network=host"
+    ],
+    "privileged": true,
+    "mounts": [
+        {
+            "source": "${localEnv:HOME}/.m2",
+            "target": "/home/root/.m2",
+            "type": "bind"
+        },
+        {
+            "source": "projectname-bashhistory",
+            "target": "/commandhistory",
+            "type": "volume"
+        }
+    ],
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2.5.0": {
+            "moby": false
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack"
+            ]
+        }
+    }
+}
